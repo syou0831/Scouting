@@ -1,0 +1,21 @@
+table{
+    font-size: 16px;
+}
+.TextBoxShort{
+    width: 50px;
+}
+.TextBoxMedium{
+    width: 100px;
+}
+
+.TextBoxLong{
+    width: 400px;
+}
+
+.SubmitButton{
+    margin: 10px;
+}
+
+.T_Title{
+    width: 150px;
+}

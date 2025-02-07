@@ -1,0 +1,16 @@
+.custom-button {
+    width: 300px;
+    height: 120px;
+    border-radius: 15px;
+    cursor: pointer; /* カーソルをポインタに変更 */
+    margin: 20px 50px;
+}
+
+.custom-button img {
+    width: 100px;; /* ボタン内の画像をボタン幅に合わせる */
+    height: 100px; /* アスペクト比を保つ */
+}
+
+a{
+    text-align: center;
+}

@@ -1,0 +1,298 @@
+cd webpro2
+docker exec -it 556 bash
+mysql -u root -p
+rootpassword
+
+use scouting;
+
+truncate table EkimuData;
+
+DROP DATABASE scouting;
+DROP TABLE SaimokuPersonData;
+ALTER TABLE PersonData ADD COLUMN SyukyouName VARCHAR(50);
+
+DELETE FROM PersonData;
+
+ALTER TABLE PersonData DROP COLUMN VolunteerName;
+
+CREATE TABLE GroupData (
+    GroupID INT NOT NULL AUTO_INCREMENT,
+    Prefecture VARCHAR(20) NOT NULL,
+    Area VARCHAR(255) NOT NULL,
+    City VARCHAR(255) NOT NULL,
+    GroupNum VARCHAR(255) NOT NULL,
+    Password VARCHAR(256) NOT NULL,
+    PRIMARY KEY(GroupId)
+);
+
+INSERT INTO GroupData (Prefecture, Area, City, GroupNum, Password)
+VALUES 
+('東京', '北多摩', '小平', '五', '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u'); //password->"password"
+
+CREATE TABLE PersonData(
+    PersonID INT NOT NULL AUTO_INCREMENT,
+    Password VARCHAR(255) NOT NULL ,
+    GroupID INT NOT NULL ,
+    Name VARCHAR(20) NOT NULL ,
+    NameFurigana VARCHAR(100) NOT NULL ,
+    Birthday DATE NOT NULL ,
+    Address VARCHAR(255) NOT NULL ,
+    Tel INT NOT NULL ,
+    Sex VARCHAR(10) NOT NULL ,
+    StateDate DATE NOT NULL ,
+    StateField VARCHAR(255) ,
+    NyudanDate DATE  ,
+    Adult VARCHAR(10) NOT NULL ,
+    inBVS DATE  ,
+    inCS DATE  ,
+    inBS DATE  ,
+    inVS DATE  ,
+    inRS DATE  ,
+    Minarai DATE  ,
+    Basic DATE  ,
+    Second DATE  ,
+    First DATE  ,
+    Kiku DATE  ,
+    Hayabusa DATE  ,
+    Fuji DATE  ,
+    SinkouSyourei DATE  ,
+    Syukyou DATE  ,
+    SyukyouName VARCHAR(50),
+    CSLeaderState DATE  ,
+    CSLeaderEnd DATE  ,
+    CSSubLeaderState DATE  ,
+    CSSubLeaderEnd DATE  ,
+    BSLeaderState DATE  ,
+    BSLeaderEnd DATE  ,
+    BSSubLeaderState DATE  ,
+    BSSubLeaderEnd DATE  ,
+    BSJouhanState DATE  ,
+    BSJouhanEnd DATE  ,
+    BSTaitukiState DATE  ,
+    BSTaitukiEnd DATE  ,
+    TaiSankaCount INT NOT NULL DEFAULT 0,
+    HanSankaCount INT NOT NULL DEFAULT 0,
+    HikingCount INT NOT NULL DEFAULT 0,
+    CampCount INT NOT NULL DEFAULT 0,
+    CampHakusu INT NOT NULL DEFAULT 0,
+
+    PRIMARY KEY (PersonID)   ,
+    FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID)
+);
+
+CREATE TABLE Volunteer(
+    PersonID INT NOT NULL,
+    VolunteerName VARCHAR(30),
+    VolunteerState DATE,
+    VolunteerEnd DATE,
+
+    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+);
+
+CREATE TABLE OverseasEvent(
+    PersonID INT NOT NULL,
+    OverseasEventName VARCHAR(30),
+    OverseasEventState DATE,
+    OverseasEventEnd DATE,
+
+    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+);
+
+CREATE TABLE JPEvent(
+    PersonID INT NOT NULL,
+    EventName VARCHAR(30),
+    EventState DATE,
+    EventEnd DATE,
+
+    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+);
+
+CREATE TABLE SaimokuData(
+    KaikyuID INT NOT NULL ,
+    KaikyuTheme VARCHAR(30) NOT NULL ,
+    FirstID INT NOT NULL ,
+    SecondID INT NOT NULL ,
+    ThirdID INT NOT NULL ,
+    GenreText VARCHAR(30) NOT NULL ,
+    DaimokuText VARCHAR(255) NOT NULL ,
+
+    PRIMARY KEY (KaikyuID, firstID, SecondID, thirdID)
+);
+
+CREATE TABLE SaimokuPersonData(
+    PersonID INT NOT NULL ,
+    KaikyuID INT NOT NULL ,
+    FirstID INT NOT NULL ,
+    SecondID INT NOT NULL ,
+    ThirdID INT NOT NULL ,
+    CompletedDate DATE  ,
+    SyouninsyaName VARCHAR(40)  ,
+
+    PRIMARY KEY (PersonID,KaikyuID,firstID,SecondID,thirdID)   ,
+    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+);
+
+CREATE TABLE EkimuData(
+    GroupID INT NOT NULL ,
+    DeptID INT NOT NULL ,
+    TeamID INT NOT NULL ,
+    EkimuID INT NOT NULL ,
+    EkimuName VARCHAR(30) NOT NULL ,
+
+    PRIMARY KEY (GroupID,DeptID,TeamID,EkimuID),
+    FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID),
+    FOREIGN KEY (DeptID) REFERENCES DeptData (DeptID),
+);
+
+INSERT INTO EkimuData (GroupID, DeptID, TeamID, EkimuID, EkimuName)
+VALUES 
+(1, 1, 1, 1, '隊長'),
+(1, 1, 1, 2, '副長'),
+(1, 1, 2, 1, 'スカウト');
+
+CREATE TABLE TeamData(
+    GroupID INT NOT NULL ,
+    DeptID INT NOT NULL ,
+    TeamID INT NOT NULL ,
+    TeamName VARCHAR(20) NOT NULL ,
+
+    PRIMARY KEY (GroupID,DeptID,TeamID)   ,
+    FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID)   ,
+    FOREIGN KEY (DeptID) REFERENCES DeptData (DeptID)
+);
+
+INSERT INTO TeamData (GroupID, DeptID, TeamID, TeamName)
+VALUES 
+(1, 1, 1, 'リーダー'),
+(1, 1, 2, 'スカウト');
+
+CREATE TABLE TeamMemberData(
+    GroupID INT NOT NULL ,
+    DeptID INT NOT NULL ,
+    TeamID INT NOT NULL ,
+    PersonID INT NOT NULL ,
+    EkimuID INT NOT NULL ,
+
+    PRIMARY KEY (GroupID,DeptID,TeamID,PersonID,EkimuID)   ,
+    FOREIGN KEY (GroupID) REFERENCES TeamData (GroupID)   ,
+    FOREIGN KEY (DeptID) REFERENCES TeamData (DeptID)   ,
+    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+);
+
+INSERT INTO TeamMemberData (GroupID, DeptID, TeamID, PersonID, EkimuID)
+VALUES 
+(1, 1, 1, 1, 1);
+
+CREATE TABLE KaikyuData(
+    KaikyuID INT NOT NULL ,
+    KaikyuText VARCHAR(20) NOT NULL
+);
+
+INSERT INTO KaikyuData (KaikyuID,KaikyuText) 
+VALUES
+(1, '見習い'),
+(2, '初級'),
+(3, '二級'),
+(4, '一級'),
+(5, '菊'),
+(6, '隼'),
+(7, '富士');
+
+CREATE TABLE DeptData(
+    DeptID INT NOT NULL ,
+    DeptName VARCHAR(20) NOT NULL,
+
+    PRIMARY KEY (DeptID)
+);
+
+INSERT INTO DeptData
+(DeptID,DeptName)
+VALUES
+(1,"ビーバー隊"),
+(2,"カブ隊"),
+(3,"ボーイ隊"),
+(4,"ベンチャー隊"),
+(5,"ローバー隊")
+;
+
+
+
+
+SELECT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
+FROM PersonData 
+JOIN TeamMemberData ON PersonData.PersonID = TeamMemberData.PersonID  
+JOIN EkimuData ON EkimuData.GroupID = TeamMemberData.GroupID & EkimuData.DeptID = TeamMemberData.DeptID & EkimuData.TeamID = TeamMemberData.TeamID & EkimuData.EkimuID = TeamMemberData.EkimuID
+WHERE DeptID = 1 & GroupID = 1;
+
+SELECT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
+FROM PersonData
+JOIN TeamMemberData
+ON PersonData.PersonID = TeamMemberData.PersonID
+JOIN EkimuData
+ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
+where TeamMemberData.GroupID = 1 AND PersonData.DeptID = 1;
+
+
+
+
+SELECT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
+FROM PersonData
+JOIN TeamMemberData
+ON PersonData.PersonID = TeamMemberData.PersonID
+JOIN EkimuData
+ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
+WHERE TeamMemberData.DeptID = 1 AND PersonData.GroupID = 1 AND TeamMemberData.TeamID = 1;
+
+
+
+
+
+$now = new DateTime();
+
+$Birthday = new DateTime("{$Birthday}");
+
+echo $now->format("Y-m-d");
+echo "<br>";
+echo $Birthday->format('Y-m-d');
+echo "<br>";
+
+$I = new DateTime('1970-04-01');
+
+$Nendo = new DateTime();
+$Nendo = strtotime($now->format('Y-m-d')) - strtotime($I->format('1970-04-01'));
+
+// echo floor($Nendo / (360 * 60 * 60 * 24));
+
+// $Nendo = ;
+$Team = floor(($Nendo - strtotime($Birthday->format('Y-m-d'))) / (360 * 60 * 60 * 24));
+
+echo $Team;
+
+switch ($Team) {
+    case 7 >= $Team;
+        echo "ビーバー";
+        break;
+
+    case 10 >= $Team;
+        echo "カブ";
+        break;
+
+    case 14 >= $Team;
+        echo "ボーイ";
+        break;
+
+    case 17 >= $Team;
+        echo "ベンチャー";
+        break;
+
+    default:
+        echo "ローバー以上";
+        break;
+}
+
+
+
+SELECT * FROM ShopCart
+JOIN Goods
+ON ShopCart.GoodsID = Goods.GoodsID 
+WHERE SessionID = '35ff0dd90b2b3f72fd755326ee0b1c92';

@@ -1,0 +1,82 @@
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.imageLogo {
+    width: 200px;
+    height: auto;
+    padding: 20px 10px 0px 10px;
+}
+
+header {
+    width: 220px;
+    height: 100%;
+    background-color: #115740;
+    position: fixed;
+}
+
+h1{
+    font-size: 400%;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+h2{
+    font-size: 36px;
+    padding: 8px 16px;
+    text-decoration: underline;
+    text-decoration-color: #000;
+}
+
+.main{
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    padding-left: 220px;
+    padding-bottom: 30px;
+}
+
+.content{
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-self: center;
+    /* background-color: aqua; */
+    /* background-color: #f4f4f4;  */
+    height: max-content;
+    width: 800px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 45px;
+}
+
+table, th, td {
+    border: 2px solid #000; /* ボーダーを黒色で2px幅 */
+    padding: 8px; /* セル内の余白 */
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4; /* ヘッダーの背景色 */
+    text-align: center;
+    border: 10px;
+}
+
+.T_Name{
+    width: 40%;
+}
+
+.T_Sex,.T_Yakumu{
+    width: 20%;
+}
+
+.T_Button{
+    width: 20%;
+    margin: auto;
+}

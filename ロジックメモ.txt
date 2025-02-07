@@ -1,0 +1,16 @@
+
+$now = new DateTime(); //現在日
+
+$Birthday = new DateTime("{$BirthdayA}"); //誕生日
+
+$I = new DateTime('1970-04-01'); 
+
+$Nendo = new DateTime();
+$Nendo = strtotime($now->format('Y-m-d')) - strtotime($I->format('1970-04-01'));
+$Team = floor(($Nendo - strtotime($Birthday->format('Y-m-d'))) / (360 * 60 * 60 * 24));
+
+if ($Team >= 18) {
+    $Adult = "大人";
+} else {
+    $Adult = "子ども";
+}
