@@ -21,28 +21,33 @@ $TID = $_POST["TeamID"];
 $EID = $_POST["count"];
 $Name = $_POST["Name"];
 
-echo $GID;
-echo "<br>";
-echo $DID;
-echo "<br>";
-echo $TID;
-echo "<br>";
-echo $EID;
-echo "<br>";
-echo $Name;
-echo "<br>";
+// echo $GID;
+// echo "<br>";
+// echo $DID;
+// echo "<br>";
+// echo $TID;
+// echo "<br>";
+// echo $EID;
+// echo "<br>";
+// echo $Name;
+// echo "<br>";
 
 $rs = $mysqli->query("SELECT * FROM EkimuData WHERE GroupID = " . $GID . " AND DeptID = " . $DID . " AND TeamID = " . $TID . " AND EkimuID =" . $EID);
 if (empty($rs->fetch_assoc())) {
-    echo "新規";
+    // echo "新規";
     $rs = $mysqli->query('INSERT INTO EkimuData (GroupID, DeptID, TeamID, EkimuID, EkimuName) VALUE (' . $GID . ', ' . $DID . ' , ' . $TID . ', ' . $EID . ', "' . $Name . '")');
     if (!is_bool($rs)) {
         $rs->fetch_assoc();
     }
 } else {
-    echo "更新";
+    // echo "更新";
     $rs = $mysqli->query('UPDATE EkimuData SET EkimuName = "' . $Name . '" WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID . ' AND TeamID = ' . $TID . ' AND EkimuID = ' . $EID);
     if (!is_bool($rs)) {
         $rs->fetch_assoc();
     }
 }
+
+$mysqli->close();
+
+header('Location:  ../HTML/EkimuEdit.php?ID=' . $DID);
+exit;

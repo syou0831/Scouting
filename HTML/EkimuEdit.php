@@ -50,55 +50,32 @@ $DID = $_GET["ID"];
         </h1>
 
         <div class="content">
-
             <?php
             $rs = $mysqli->query('SELECT * FROM TeamData WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID);
             echo "<table>";
             while ($row = $rs->fetch_assoc()) {
                 $count = 1;
-                $TeamID = 0;
-                $rs2 = $mysqli->query('SELECT * FROM Ekimudata WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID . ' AND TeamID = ' . $row["TeamID"]);
+                $TeamID = 1;
                 echo "<tr><th colspan='2'>" . $row["TeamName"] . "</th></tr>";
+                $rs2 = $mysqli->query('SELECT * FROM EkimuData WHERE GroupID =' . $GID . ' AND DeptID =' . $DID . ' AND TeamID =' . $row["TeamID"]);
                 while ($row2 = $rs2->fetch_assoc()) {
-                    echo "<form method='POST' action='../Data/EkimuEditData.php'>";
+                    echo "<tr><form method='POST' action='../Data/EkimuEditData.php'>";
                     echo "<input type='hidden' name='count' value='" . $count . "'>";
                     echo "<input type='hidden' name='DeptID' value='" . $DID . "'>";
-                    echo "<input type='hidden' name='TeamID' value='" . $row2["TeamID"] . "'>";
+                    echo "<input type='hidden' name='TeamID' value='" . $row["TeamID"] . "'>";
                     $count += 1;
-                    echo "<tr><td><input type='text' name='Name' value='" . $row2["EkimuName"] . "'></td>";
-                    echo "<td><input type='submit' value='反映'></td></tr></form>";
-                    $TeamID = $row2["TeamID"];
+                    echo "<td><input type='text' name='Name' value='" . $row2["EkimuName"] . "'></td>";
+                    echo "<td><input type='submit' value='反映'></td></form></tr>";
                 }
 
-                echo "<form method='POST' action='../Data/EkimuEditData.php'>";
+                echo "<tr><form method='POST' action='../Data/EkimuEditData.php'>";
                 echo "<input type='hidden' name='count' value='" . $count . "'>";
                 echo "<input type='hidden' name='DeptID' value='" . $DID . "'>";
-                echo "<input type='hidden' name='TeamID' value='" . $TeamID . "'>";
-                echo "<tr><td><input type='text' name='Name' value='" . $row2["EkimuName"] . "'></td>";
+                echo "<input type='hidden' name='TeamID' value='" . $row["TeamID"] . "'>";
+                echo "<td><input type='text' name='Name' value=''></td>";
                 echo "<td><input type='submit' value='反映'></td></tr></form>";
             }
             echo "</table>";
-
-            // $rs = $mysqli->query('SELECT * FROM EkimuData WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID . ' AND TeamID = ');
-            // echo "<table>";
-            // while ($row = $rs->fetch_assoc()) {
-            //     echo "<form method='POST' action='../Data/EkimuEditData.php'>";
-            //     echo "<input type='hidden' name='count' value='" . $count . "'>";
-            //     echo "<input type='hidden' name='DeptID' value='" . $DID . "'>";
-            //     $count += 1;
-            //     echo "<tr><td><input type='text' name='Name' value='" . $row["EkimuName"] . "'></td><td>";
-            //     echo "<select name='Team' size='1'>";
-            //     $rs2 = $mysqli->query('SELECT * FROM TeamData WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID);
-            //     while ($row2 = $rs2->fetch_assoc()) {
-            //         echo "<option value='" . $row2["TeamID"] . "'>" . $row2["TeamName"] . "</option>";
-            //     }
-            //     echo "</select></td><td><input type='submit' value='反映'></td></tr></form>";
-            // }
-
-
-
-
-            // echo "</table>";
             ?>
         </div>
     </div>
