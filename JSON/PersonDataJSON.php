@@ -17,10 +17,10 @@ $Data[] = array(
     'Address' => $row["Address"],
     'Tel' => $row["Tel"],
     'Sex' => $row["Sex"],
-    'Prefecture' => $row["Prefecture"],
-    'Area' => $row["Area"],
-    'City' => $row["City"],
-    'GroupNum' => $row["GroupNum"]
+    'Prefecture' => $row2["Prefecture"],
+    'Area' => $row2["Area"],
+    'City' => $row2["City"],
+    'GroupNum' => $row2["GroupNum"]
 );
 
 $rs->free();
