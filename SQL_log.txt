@@ -141,7 +141,7 @@ CREATE TABLE EkimuData(
 
     PRIMARY KEY (GroupID,DeptID,TeamID,EkimuID),
     FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID),
-    FOREIGN KEY (DeptID) REFERENCES DeptData (DeptID),
+    FOREIGN KEY (DeptID) REFERENCES DeptData (DeptID)
 );
 
 INSERT INTO EkimuData (GroupID, DeptID, TeamID, EkimuID, EkimuName)

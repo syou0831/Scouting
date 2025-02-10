@@ -35,7 +35,7 @@ $DID = $_GET["ID"];
 
 <body>
     <header>
-        <a href="index.php"><img src="/Scouting/image/BS_logo.png" class="imageLogo"></a>
+        <a href="index.php"><img src="../image/BS_logo.png" class="imageLogo"></a>
         <a href="../Data/LogoutData.php">ログアウト</a>
     </header>
     <div class="main">
