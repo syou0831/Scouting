@@ -32,31 +32,18 @@ VALUES
 '" . $Adult . "'
 )");
 
-if (is_bool($rs)) {
-    // var_dump($mysqli->error);
-} else {
-    $rs->fetch_assoc();
+$rs = $mysqli->query("SELECT Max(PersonID) AS PersonID FROM personData")->fetch_array();
+$rs2 = $mysqli->query("SELECT * FROM SaimokuData");
+
+while ($row = $rs2->fetch_assoc()) {
+    $mysqli->query("INSERT INTO SaimokuPersonData (PersonID, KaikyuID, FirstID, SecondID, ThirdID) 
+                        VALUE 
+        (" . $rs["PersonID"] . "," .
+        $row["KaikyuID"] . "," .
+        $row["FirstID"] . "," .
+        $row["SecondID"] . "," .
+        $row["ThirdID"] . ")");
 }
-
-// $rs2 = $mysqli->query("SELECT MAX(PersonID) FROM PersonData");
-
-// $row2 = $rs2->fetch_assoc();
-
-// $rs3 = $mysqli->query("INSERT INTO TeamMemberData
-// (GroupID, DeptID, TeamID, PersonID, EkimuID)
-// VALUES 
-// (" . $_SESSION["GID"] . ",
-// " . $ID . ",
-// " . $_POST["Team"] . ",
-// " . $row2["MAX(PersonID)"] . ",
-// " . $_POST["Ekimu"] . "
-// )
-// ");
-// if (is_bool($rs3)) {
-// } else {
-//     $rs3->fetch_assoc();
-// }
-
 $mysqli->close();
 
 header('Location:  ../HTML/PersonAdd.php');

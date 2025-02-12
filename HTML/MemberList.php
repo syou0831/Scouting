@@ -55,7 +55,7 @@ $DID = $_GET["ID"];
             echo "<a href='./EkimuEdit.php?ID={$DID}'><button>役務の編集</button></a>";
             $rs = $mysqli->query('SELECT TeamID, TeamName FROM TeamData WHERE DeptID =' . $DID . ' AND GroupID = ' . $_SESSION["GID"]);
             while ($row = $rs->fetch_assoc()) {
-                $rs2 = $mysqli->query('SELECT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
+                $rs2 = $mysqli->query('SELECT DISTINCT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
                                         FROM PersonData
                                         JOIN TeamMemberData
                                         ON PersonData.PersonID = TeamMemberData.PersonID

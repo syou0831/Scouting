@@ -13,19 +13,17 @@ $TID = $_POST["Team"];
 $PID = $_POST["PersonID"];
 $Ekimu = $_POST["Ekimu"];
 
-echo $PID;
-
-$rs = $mysqli->query('SELECT * FROM TeamMemberData WHERE DeptID = ' . $DID . ' AND PersonID = ' . $PID);
+$rs = $mysqli->query('SELECT * FROM TeamMemberData WHERE GroupID = " . $GID . " AND DeptID = ' . $DID . ' AND PersonID = ' . $PID);
 $row = $rs->fetch_assoc();
 
 if (empty($row)) {
     $mysqli->query('INSERT INTO TeamMemberData  (GroupID, DeptID, TeamID, PersonID, EkimuID)
                     VALUE (' . $GID . ' , ' . $DID . ' , ' . $TID . ' , ' . $PID . ' , ' . $Ekimu . ')');
-    // echo "インサート";
+    echo "インサート";
 } else {
     $mysqli->query('UPDATE TeamMemberData SET TeamID = ' . $TID . ' WHERE PersonID = ' . $PID . ' AND DeptID = ' . $DID);
     $mysqli->query('UPDATE TeamMemberData SET EkimuID = ' . $Ekimu . ' WHERE PersonID = ' . $PID);
-    // echo "アップデート";
+    echo "アップデート";
 }
 
 // header("Location:  ../HTML/TeamMemberEdit.php?ID=" . $DID);

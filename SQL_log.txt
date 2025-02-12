@@ -15,6 +15,9 @@ DELETE FROM PersonData;
 
 ALTER TABLE PersonData DROP COLUMN VolunteerName;
 
+//データ削除
+TRUNCATE TABLE PersonData;
+
 CREATE TABLE GroupData (
     GroupID INT NOT NULL AUTO_INCREMENT,
     Prefecture VARCHAR(20) NOT NULL,
@@ -131,6 +134,14 @@ CREATE TABLE SaimokuPersonData(
     PRIMARY KEY (PersonID,KaikyuID,firstID,SecondID,thirdID)   ,
     FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
 );
+
+
+SELECT SaimokuPersonData.PersonID, SaimokuData.KaikyuID, SaimokuData.KaikyuTheme, SaimokuData.FirstID, SaimokuData.SecondID, SaimokuData.ThirdID, SaimokuData.GenreText, SaimokuData.DaimokuText, SaimokuPersonData.CompletedDate, SaimokuPersonData.SyouninsyaName
+FROM SaimokuData
+JOIN SaimokuPersonData 
+ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = SaimokuPersonData.FirstID AND SaimokuData.SecondID = SaimokuPersonData.SecondID AND SaimokuData.ThirdID = SaimokuPersonData.ThirdID
+;
+
 
 CREATE TABLE EkimuData(
     GroupID INT NOT NULL ,
@@ -296,3 +307,17 @@ SELECT * FROM ShopCart
 JOIN Goods
 ON ShopCart.GoodsID = Goods.GoodsID 
 WHERE SessionID = '35ff0dd90b2b3f72fd755326ee0b1c92';
+
+
+SELECT DISTINCT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName, TeamMemberData.DeptID,TeamMemberData.TeamID 
+FROM PersonData
+JOIN TeamMemberData
+ON PersonData.PersonID = TeamMemberData.PersonID
+JOIN EkimuData
+ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
+WHERE TeamMemberData.GroupID = 1 AND TeamMemberData.DeptID = 5 AND TeamMemberData.TeamID = 1;
+
+SELECT * FROM SaimokuData
+JOIN SaimokuPersonData
+ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = SaimokuPersonData.FirstID AND SaimokuData.SecondID = SaimokuPersonData.SecondID AND SaimokuData.ThirdID = SaimokuPersonData.ThirdID
+WHERE PersonID = 52;

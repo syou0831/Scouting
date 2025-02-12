@@ -4,7 +4,10 @@ $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
 $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
 
-$rs = $mysqli->query("SELECT * FROM SaimokuData");
+$rs = $mysqli->query("SELECT DISTINCT * FROM SaimokuData
+JOIN SaimokuPersonData
+ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = SaimokuPersonData.FirstID AND SaimokuData.SecondID = SaimokuPersonData.SecondID AND SaimokuData.ThirdID = SaimokuPersonData.ThirdID
+WHERE PersonID = " . $_GET["PID"]);
 
 while ($row = $re->fetch_assoc()) {
     $Data[] = array(
@@ -14,7 +17,8 @@ while ($row = $re->fetch_assoc()) {
         'SecondID' => $row["SecondID"],
         'ThirdID' => $row["ThirdID"],
         'GenreText' => $row["GenreText"],
-        'DaimokuText' => $row["DaimokuText"],
+        'CompletedDate' => $row["CompletedDate"],
+        'SyouninsyaName' => $row["SyouninsyaName"],
     );
 }
 
