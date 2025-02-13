@@ -11,7 +11,11 @@ DROP DATABASE scouting;
 DROP TABLE SaimokuPersonData;
 ALTER TABLE PersonData ADD COLUMN SyukyouName VARCHAR(50);
 
+ALTER TABLE PersonData ADD COLUMN DeptImage VARCHAR(5);
+
 DELETE FROM PersonData;
+
+UPDATE DeptData SET DeptImage = "BVS" WHERE DeptID = 1;
 
 ALTER TABLE PersonData DROP COLUMN VolunteerName;
 

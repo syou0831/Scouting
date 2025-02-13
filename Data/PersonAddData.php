@@ -32,17 +32,11 @@ VALUES
 '" . $Adult . "'
 )");
 
-$rs = $mysqli->query("SELECT Max(PersonID) AS PersonID FROM personData")->fetch_array();
+$rs = $mysqli->query("SELECT Max(PersonID) AS PersonID FROM PersonData")->fetch_array();
 $rs2 = $mysqli->query("SELECT * FROM SaimokuData");
 
 while ($row = $rs2->fetch_assoc()) {
-    $mysqli->query("INSERT INTO SaimokuPersonData (PersonID, KaikyuID, FirstID, SecondID, ThirdID) 
-                        VALUE 
-        (" . $rs["PersonID"] . "," .
-        $row["KaikyuID"] . "," .
-        $row["FirstID"] . "," .
-        $row["SecondID"] . "," .
-        $row["ThirdID"] . ")");
+    $mysqli->query("INSERT INTO SaimokuPersonData (PersonID, KaikyuID, FirstID, SecondID, ThirdID, CompletedDate, SyouninsyaName) VALUE (" . $rs["PersonID"] . ", " . $row["KaikyuID"] . ", " . $row["FirstID"] . ", " . $row["SecondID"] . ", " . $row["ThirdID"] . ", Null, Null)");
 }
 $mysqli->close();
 
