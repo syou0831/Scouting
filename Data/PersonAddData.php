@@ -7,7 +7,6 @@ $mysqli->set_charset(UTF8);
 if ($mysqli->connect_errno) {
 }
 
-
 $Name = $_POST["Name"];
 $NameKana = $_POST["NameKana"];
 $BirthdayA = $_POST["Birthday"];
@@ -17,9 +16,9 @@ $Sex = $_POST["sex"];
 $StateDate = $_POST["StateDate"];
 
 $rs = $mysqli->query("INSERT INTO PersonData
-(Password, GroupID, Name, NameFurigana, Birthday, Address, Tel, sex, StateDate,Adult) 
+(PersonID, Password, GroupID, Name, NameFurigana, Birthday, Address, Tel, Sex, StateDate) 
 VALUES 
-('
+(UUID(),'
 " . '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u' . "',
 " . $_SESSION["GID"] . ",
 '" . $Name . "',
@@ -28,15 +27,14 @@ VALUES
 '" . $Address . "',
 '" . $Tel . "',
 '" . $Sex . "',
-'" . $StateDate . "',
-'" . $Adult . "'
+'" . $StateDate . "'
 )");
 
-$rs = $mysqli->query("SELECT Max(PersonID) AS PersonID FROM PersonData")->fetch_array();
+$rs = $mysqli->query("SELECT Max(PersonDataID) AS PersonDataID FROM PersonData")->fetch_array();
 $rs2 = $mysqli->query("SELECT * FROM SaimokuData");
 
 while ($row = $rs2->fetch_assoc()) {
-    $mysqli->query("INSERT INTO SaimokuPersonData (PersonID, KaikyuID, FirstID, SecondID, ThirdID, CompletedDate, SyouninsyaName) VALUE (" . $rs["PersonID"] . ", " . $row["KaikyuID"] . ", " . $row["FirstID"] . ", " . $row["SecondID"] . ", " . $row["ThirdID"] . ", Null, Null)");
+    $mysqli->query("INSERT INTO SaimokuPersonData (PersonDataID, KaikyuID, FirstID, SecondID, ThirdID, CompletedDate, SyouninsyaName) VALUE (" . $rs["PersonDataID"] . ", " . $row["KaikyuID"] . ", " . $row["FirstID"] . ", " . $row["SecondID"] . ", " . $row["ThirdID"] . ", Null, Null)");
 }
 $mysqli->close();
 

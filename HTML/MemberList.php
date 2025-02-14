@@ -55,10 +55,10 @@ $DID = $_GET["ID"];
             echo "<a href='./EkimuEdit.php?ID={$DID}'><button>役務の編集</button></a>";
             $rs = $mysqli->query('SELECT TeamID, TeamName FROM TeamData WHERE DeptID =' . $DID . ' AND GroupID = ' . $_SESSION["GID"]);
             while ($row = $rs->fetch_assoc()) {
-                $rs2 = $mysqli->query('SELECT DISTINCT PersonData.PersonID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
+                $rs2 = $mysqli->query('SELECT DISTINCT PersonData.PersonDataID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
                                         FROM PersonData
                                         JOIN TeamMemberData
-                                        ON PersonData.PersonID = TeamMemberData.PersonID
+                                        ON PersonData.PersonDataID = TeamMemberData.PersonDataID
                                         JOIN EkimuData
                                         ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
                                         WHERE TeamMemberData.DeptID =' . $DID . ' AND PersonData.GroupID = ' . $_SESSION["GID"] . ' AND TeamMemberData.TeamID = ' . $row["TeamID"]);
@@ -72,7 +72,7 @@ $DID = $_GET["ID"];
                         <td class='T_Yakumu'>" . $row2["EkimuName"] . "</td>
                         <td class='T_Button'>
                         <form method='POST' action='./PersonData.php'>
-                        <input type='hidden' name='PID' value=" . $row2["PersonID"] . ">
+                        <input type='hidden' name='PID' value=" . $row2["PersonDataID"] . ">
                         <input type='hidden' name='DID' value=" . $DID . ">
                         <input type='submit' value='詳細'>
             </form>

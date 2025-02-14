@@ -10,7 +10,7 @@ $KID = $_GET["KID"];
 $rs = $mysqli->query("SELECT DISTINCT * FROM SaimokuData
 JOIN SaimokuPersonData
 ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = SaimokuPersonData.FirstID AND SaimokuData.SecondID = SaimokuPersonData.SecondID AND SaimokuData.ThirdID = SaimokuPersonData.ThirdID
-WHERE PersonID = " . $PID);
+WHERE PersonDataID = " . $PID);
 
 while ($row = $rs->fetch_assoc()) {
     $Data[] = array(

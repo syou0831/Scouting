@@ -57,7 +57,7 @@ $DID = $_POST["DID"];
             </form>";
 
             echo "<h2>基本情報</h2><table>";
-            $rs = $mysqli->query('SELECT * FROM PersonData WHERE PersonID = ' . $PID);
+            $rs = $mysqli->query('SELECT * FROM PersonData WHERE PersonDataID = ' . $PID);
             $row = $rs->fetch_assoc();
             echo "<tr><td class='T_Title'>所属</td><td>日本ボーイスカウト東京連盟北多摩地区小平第5団</td></tr>";
             echo "<tr><td class='T_Title'>名前(ガナ)</td><td>" . $row["NameFurigana"] . "</td></tr>";

@@ -50,7 +50,7 @@ if ($mysqli->connect_errno) {
             $bool = false;
             while ($row = $rs->fetch_assoc()) {
                 echo "<a href='MemberList.php?ID=" . $row["DeptID"] . "'><Button class='custom-button'>";
-                echo "<img src='../image/" . $row["DeptImage"] . ".png'>";
+                echo "<img src='../image/" . $row["imageName"] . ".png'>";
                 echo $row["DeptName"];
                 echo    "</Button></a>";
                 if ($bool) {

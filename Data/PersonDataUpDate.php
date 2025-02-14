@@ -9,232 +9,269 @@ if ($mysqli->connect_errno) {
 $ID = $_POST["PID"];
 
 if (!empty($_POST["Name"])) {
-    $rs = $mysqli->query('UPDATE PersonData SET Name = "' . $_POST["Name"] . '" WHERE PersonID = ' . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query('UPDATE PersonData SET Name = "' . $_POST["Name"] . '" WHERE PersonDataID = ' . $ID);
+    // $rs = $mysqli->query('UPDATE PersonData SET Name = "' . $_POST["Name"] . '" WHERE PersonDataID = ' . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["NameKana"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET NameFurigana = '" . $_POST["NameKana"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET NameFurigana = '" . $_POST["NameKana"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET NameFurigana = '" . $_POST["NameKana"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Birthday"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Birthday = '" . $_POST["Birthday"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Birthday = '" . $_POST["Birthday"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Birthday = '" . $_POST["Birthday"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Address"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Address = '" . $_POST["Address"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Address = '" . $_POST["Address"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Address = '" . $_POST["Address"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["FirstTel"]) && !empty($_POST["SecondTel"]) && !empty($_POST["ThirdTel"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["StateDate"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET StateDate = '" . $_POST["StateDate"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET StateDate = '" . $_POST["StateDate"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET StateDate = '" . $_POST["StateDate"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["StateField"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET StateField = '" . $_POST["StateField"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET StateField = '" . $_POST["StateField"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET StateField = '" . $_POST["StateField"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["inBVS"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET inBVS = '" . $_POST["inBVS"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inBVS = '" . $_POST["inBVS"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inBVS = '" . $_POST["inBVS"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET inBVS = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inBVS = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inBVS = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["inCS"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET inCS = '" . $_POST["inCS"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inCS = '" . $_POST["inCS"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inCS = '" . $_POST["inCS"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET inCS = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inCS = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inCS = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["inBS"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET inBS = '" . $_POST["inBS"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inBS = '" . $_POST["inBS"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inBS = '" . $_POST["inBS"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET inBS = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inBS = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inBS = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["inVS"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET inVS = '" . $_POST["inVS"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inVS = '" . $_POST["inVS"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inVS = '" . $_POST["inVS"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET inVS = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inVS = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inVS = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["inRS"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET inRS = '" . $_POST["inRS"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inRS = '" . $_POST["inRS"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inRS = '" . $_POST["inRS"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET inRS = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET inRS = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET inRS = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Minarai"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Minarai = '" . $_POST["Minarai"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Minarai = '" . $_POST["Minarai"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Minarai = '" . $_POST["Minarai"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Minarai = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Minarai = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Minarai = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Basic"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Basic = '" . $_POST["Basic"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Basic = '" . $_POST["Basic"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Basic = '" . $_POST["Basic"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Basic = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Basic = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Basic = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Second"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Second = '" . $_POST["Second"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Second = '" . $_POST["Second"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Second = '" . $_POST["Second"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Second = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Second = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Second = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["First"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET First = '" . $_POST["First"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET First = '" . $_POST["First"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET First = '" . $_POST["First"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET First = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET First = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET First = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Kiku"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Kiku = '" . $_POST["Kiku"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Kiku = '" . $_POST["Kiku"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Kiku = '" . $_POST["Kiku"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Kiku = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Kiku = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Kiku = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Hayabusa"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Hayabusa = '" . $_POST["Hayabusa"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Hayabusa = '" . $_POST["Hayabusa"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Hayabusa = '" . $_POST["Hayabusa"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Hayabusa = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Hayabusa = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Hayabusa = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Fuji"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Fuji = '" . $_POST["Fuji"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Fuji = '" . $_POST["Fuji"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Fuji = '" . $_POST["Fuji"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Fuji = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Fuji = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Fuji = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["SinkouSyourei"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET SinkouSyourei = '" . $_POST["SinkouSyourei"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET SinkouSyourei = '" . $_POST["SinkouSyourei"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET SinkouSyourei = '" . $_POST["SinkouSyourei"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET SinkouSyourei = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET SinkouSyourei = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET SinkouSyourei = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["Syukyou"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = '" . $_POST["Syukyouame"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET Syukyouame = '" . $_POST["Syukyouame"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = '" . $_POST["Syukyouame"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = NULL WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = NULL WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = NULL WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 if (!empty($_POST["SyukyouName"])) {
-    $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = '" . $_POST["SyukyouName"] . "' WHERE PersonID = " . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = '" . $_POST["SyukyouName"] . "' WHERE PersonDataID = " . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = '" . $_POST["SyukyouName"] . "' WHERE PersonDataID = " . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 } else {
-    $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = NULL WHERE PersonID =" . $ID);
-    if (!is_bool($rs)) {
-        $rs->fetch_assoc();
-    }
+    $mysqli->query("UPDATE PersonData SET SyukyouName = NULL WHERE PersonDataID =" . $ID);
+    // $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = NULL WHERE PersonDataID =" . $ID);
+    // if (!is_bool($rs)) {
+    //     $rs->fetch_assoc();
+    // }
 }
 
 

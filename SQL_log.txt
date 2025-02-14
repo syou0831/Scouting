@@ -22,6 +22,7 @@ ALTER TABLE PersonData DROP COLUMN VolunteerName;
 //データ削除
 TRUNCATE TABLE PersonData;
 
+
 CREATE TABLE GroupData (
     GroupID INT NOT NULL AUTO_INCREMENT,
     Prefecture VARCHAR(20) NOT NULL,
@@ -37,7 +38,8 @@ VALUES
 ('東京', '北多摩', '小平', '五', '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u'); //password->"password"
 
 CREATE TABLE PersonData(
-    PersonID INT NOT NULL AUTO_INCREMENT,
+    PersonID VARCHAR(255) NOT NULL ,
+    PersonDataID INT AUTO_INCREMENT NOT NULL ,
     Password VARCHAR(255) NOT NULL ,
     GroupID INT NOT NULL ,
     Name VARCHAR(20) NOT NULL ,
@@ -83,35 +85,35 @@ CREATE TABLE PersonData(
     CampCount INT NOT NULL DEFAULT 0,
     CampHakusu INT NOT NULL DEFAULT 0,
 
-    PRIMARY KEY (PersonID)   ,
+    PRIMARY KEY (PersonDataID),
     FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID)
 );
 
 CREATE TABLE Volunteer(
-    PersonID INT NOT NULL,
+    PersonDataID INT NOT NULL,
     VolunteerName VARCHAR(30),
     VolunteerState DATE,
     VolunteerEnd DATE,
 
-    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+    FOREIGN KEY (PersonDataID) REFERENCES PersonData (PersonDataID)
 );
 
 CREATE TABLE OverseasEvent(
-    PersonID INT NOT NULL,
+    PersonDataID INT NOT NULL,
     OverseasEventName VARCHAR(30),
     OverseasEventState DATE,
     OverseasEventEnd DATE,
 
-    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+    FOREIGN KEY (PersonDataID) REFERENCES PersonData (PersonDataID)
 );
 
 CREATE TABLE JPEvent(
-    PersonID INT NOT NULL,
+    PersonDataID INT NOT NULL,
     EventName VARCHAR(30),
     EventState DATE,
     EventEnd DATE,
 
-    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+    FOREIGN KEY (PersonDataID) REFERENCES PersonData (PersonDataID)
 );
 
 CREATE TABLE SaimokuData(
@@ -127,7 +129,7 @@ CREATE TABLE SaimokuData(
 );
 
 CREATE TABLE SaimokuPersonData(
-    PersonID INT NOT NULL ,
+    PersonDataID INT NOT NULL ,
     KaikyuID INT NOT NULL ,
     FirstID INT NOT NULL ,
     SecondID INT NOT NULL ,
@@ -135,8 +137,8 @@ CREATE TABLE SaimokuPersonData(
     CompletedDate DATE  ,
     SyouninsyaName VARCHAR(40)  ,
 
-    PRIMARY KEY (PersonID,KaikyuID,firstID,SecondID,thirdID)   ,
-    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+    PRIMARY KEY (PersonDataID,KaikyuID,firstID,SecondID,thirdID)   ,
+   FOREIGN KEY (PersonDataID) REFERENCES PersonData (PersonDataID)
 );
 
 
@@ -185,18 +187,19 @@ CREATE TABLE TeamMemberData(
     GroupID INT NOT NULL ,
     DeptID INT NOT NULL ,
     TeamID INT NOT NULL ,
-    PersonID INT NOT NULL ,
+    PersonDataID INT NOT NULL ,
     EkimuID INT NOT NULL ,
 
-    PRIMARY KEY (GroupID,DeptID,TeamID,PersonID,EkimuID)   ,
+    PRIMARY KEY (GroupID,DeptID,TeamID,PersonDataID,EkimuID)   ,
     FOREIGN KEY (GroupID) REFERENCES TeamData (GroupID)   ,
     FOREIGN KEY (DeptID) REFERENCES TeamData (DeptID)   ,
-    FOREIGN KEY (PersonID) REFERENCES PersonData (PersonID)
+    FOREIGN KEY (PersonDataID) REFERENCES PersonData (PersonDataID)
 );
 
 INSERT INTO TeamMemberData (GroupID, DeptID, TeamID, PersonID, EkimuID)
 VALUES 
 (1, 1, 1, 1, 1);
+
 
 CREATE TABLE KaikyuData(
     KaikyuID INT NOT NULL ,

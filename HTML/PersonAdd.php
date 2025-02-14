@@ -72,32 +72,6 @@ if ($mysqli->connect_errno) {
                 </td></tr>
                 <tr><td class='T_Title'>入団日</td>
                 <td><input type='Date' name='StateDate'></td></tr>";
-
-            // <tr><td class='T_Title'>大人/子ども</td>
-            // <td>
-            // <select name='Adult'>
-            // <option value='大人'>大人</option>
-            // <option value='子ども'>子ども</option>
-            // </select>
-            // </td></tr>";
-            //     <tr><td class='T_Title'>班</td>
-            //     <td>
-            //     <select name='Team'>";
-
-            // $rs = $mysqli->query('SELECT * FROM TeamData WHERE DeptID = ' . $ID . "& GroupID = " . $_SESSION["GID"]);
-            // while ($row = $rs->fetch_assoc()) {
-            //     echo "<option value='" . $row["TeamID"] . "'>" . $row["TeamName"] . "</option>";
-            // }
-
-            // echo "
-            //     </td></tr>";
-            // <tr><td class='T_Title'>役割</td>
-            // <td>
-            // <select name='Ekimu'>";
-            // $rs = $mysqli->query('SELECT * FROM EkimuData WHERE DeptID = ' . $ID . "& GroupID = " . $_SESSION["GID"]);
-            // while ($row = $rs->fetch_assoc()) {
-            //     echo "<option value='" . $row["EkimuID"] . "'>" . $row["EkimuName"] . "</option>";
-            // }
             echo "
                 </Table>
                 <input type='submit' class='SubmitButton' value='確定'>

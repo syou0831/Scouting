@@ -46,7 +46,7 @@ $ID = $_POST["PID"];
 
         <div class="content">
             <?php
-            $rs = $mysqli->query('SELECT * FROM PersonData WHERE PersonID = ' . $ID);
+            $rs = $mysqli->query('SELECT * FROM PersonData WHERE PersonDataID = ' . $ID);
             $row = $rs->fetch_assoc();
             echo "<h2>基本情報</h2>";
             echo "<form method='POST' action='../HTML/PersonData.php'>
@@ -110,7 +110,7 @@ $ID = $_POST["PID"];
                 <td><input type='Date' name='Syukyou' value='" . $row["Syukyou"] . "'></td>
                 <tr><td class='T_Title'>宗教</td>
                 <td><input type='text' name='SyukyouName' value='" . $row["SyukyouName"] . "'></td></Table>
-                <input type='hidden' name='PID' value=" . $row["PersonID"] . ">
+                <input type='hidden' name='PID' value=" . $row["PersonDataID"] . ">
                 <input type='hidden' name='DID' value=" . $DID . ">
                 <input type='submit' class='SubmitButton' value='確定'>
                 </form>";

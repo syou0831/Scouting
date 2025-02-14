@@ -4,7 +4,7 @@ $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
 $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
 
-$rs = $mysqli->query("SELECT Name, NameFurigana, Birthday, Address, Tel, Sex FROM PersonData WHERE PersonID = 1");
+$rs = $mysqli->query("SELECT Name, NameFurigana, Birthday, Address, Tel, Sex FROM PersonData WHERE PersonDataID = 1");
 $row = $rs->fetch_assoc();
 
 $rs2 = $mysqli->query("SELECT * FROM GroupData WHERE GroupID = 1");

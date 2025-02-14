@@ -86,7 +86,7 @@ switch ($DID) {
 
         <div class="content">
             <?php
-            $rs = $mysqli->query('SELECT Name, Birthday, PersonID, Sex
+            $rs = $mysqli->query('SELECT Name, Birthday, PersonDataID, Sex
                                     FROM PersonData 
                                     WHERE Birthday < "' . $NinBirthday->format('Y-03-31') . '" AND Birthday > "' . $MaxBirthday->format('Y-m-d') . '" AND GroupID = ' . $_SESSION["GID"]);
             echo "<table>";
@@ -111,7 +111,7 @@ switch ($DID) {
                     echo "<option value='" . $row3["TeamID"] . "'>" . $row3["TeamName"] . "</option>";
                 }
                 echo "</select></td>
-                <input type='hidden' name='PersonID' value=' " . $row["PersonID"] . "'>
+                <input type='hidden' name='PersonDataID' value=' " . $row["PersonDataID"] . "'>
                 <input type='hidden' name='DID' value=' " . $DID . "'>
                 <td><input type='submit' value='反映'></td></tr></form>";
             }

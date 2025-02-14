@@ -9,10 +9,10 @@ if($_SERVER["SERVER_NAME"] == 'localhost'){
     define( 'UTF8', 'utf-8');
 } else {
     //lolipop
-    define( 'HOST_NAME','mysql310.phy.lolipop.lan');
+    define( 'HOST_NAME','mysql313.phy.lolipop.lan');
     define( 'USER_NAME', 'LAA1607031');
     define( 'DB_PASS', 'password');
-    define( 'DB_NAME', 'LAA1607031-webshop');
+    define( 'DB_NAME', 'LAA1607031-scouting');
     define( 'UTF8', 'utf8');
 }
 
