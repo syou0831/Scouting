@@ -60,6 +60,7 @@ $DID = $_POST["DID"];
             $rs = $mysqli->query('SELECT * FROM PersonData WHERE PersonDataID = ' . $PID);
             $row = $rs->fetch_assoc();
             echo "<tr><td class='T_Title'>所属</td><td>日本ボーイスカウト東京連盟北多摩地区小平第5団</td></tr>";
+            echo "<tr><td class='T_Title'>ID</td><td>" . $row["PersonID"] . "</td></tr>";
             echo "<tr><td class='T_Title'>名前(ガナ)</td><td>" . $row["NameFurigana"] . "</td></tr>";
             echo "<tr><td class='T_Title'>名前</td><td>" . $row["Name"] . "</td></tr>";
             echo "<tr><td class='T_Title'>誕生日</td><td>" . $row["Birthday"] . "</td></tr>";

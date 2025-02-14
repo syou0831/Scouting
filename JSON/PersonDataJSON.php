@@ -4,10 +4,12 @@ $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
 $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
 
-$rs = $mysqli->query("SELECT Name, NameFurigana, Birthday, Address, Tel, Sex FROM PersonData WHERE PersonDataID = 1");
+$PID = $_GET["PID"];
+
+$rs = $mysqli->query("SELECT GroupID, Name, NameFurigana, Birthday, Address, Tel, Sex FROM PersonData WHERE PersonDataID = " . $PID);
 $row = $rs->fetch_assoc();
 
-$rs2 = $mysqli->query("SELECT * FROM GroupData WHERE GroupID = 1");
+$rs2 = $mysqli->query("SELECT * FROM GroupData WHERE GroupID = " . $row["GroupID"]);
 $row2 = $rs2->fetch_assoc();
 
 $Data[] = array(

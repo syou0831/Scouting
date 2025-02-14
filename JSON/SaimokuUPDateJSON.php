@@ -4,7 +4,7 @@ $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
 $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
 
-$PID = $_GET["PersonID"];
+$PID = $_GET["PID"];
 $KaikyuID = $_GET["KaikyuID"];
 $FirstID = $_GET["FirstID"];
 $SecondID = $_GET["SecondID"];
@@ -26,7 +26,10 @@ echo $DateText;
 echo "<br>";
 echo $Name;
 
-// $Date = 
+// $mysqli->query('UPDATE SaimokuPersonData SET CompletedDate = "'  . $DateText . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID)->fetch_assoc();
+$sql = 'UPDATE SaimokuPersonData SET CompletedDate = "'  . $DateText . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID;
+// $sql = 'UPDATE SaimokuPersonData SET CompletedDate = "2025-02-14" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID;
+echo $sql;
+$mysqli->query($sql);
 
-// $mysqli->query('UPDATE SaimokuPersonData SET CompletedDate = "'  . $Date . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID);
-// $mysqli->query('UPDATE SaimokuPersonData SET SyouninsyaName = "'  . $Name . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID);
+$mysqli->query('UPDATE SaimokuPersonData SET SyouninsyaName = "'  . $Name . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID)->fetch_assoc();

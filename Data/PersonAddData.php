@@ -18,8 +18,7 @@ $StateDate = $_POST["StateDate"];
 $rs = $mysqli->query("INSERT INTO PersonData
 (PersonID, Password, GroupID, Name, NameFurigana, Birthday, Address, Tel, Sex, StateDate) 
 VALUES 
-(UUID(),'
-" . '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u' . "',
+(UUID(),'" . '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u' . "',
 " . $_SESSION["GID"] . ",
 '" . $Name . "',
 '" . $NameKana . "',
@@ -34,7 +33,7 @@ $rs = $mysqli->query("SELECT Max(PersonDataID) AS PersonDataID FROM PersonData")
 $rs2 = $mysqli->query("SELECT * FROM SaimokuData");
 
 while ($row = $rs2->fetch_assoc()) {
-    $mysqli->query("INSERT INTO SaimokuPersonData (PersonDataID, KaikyuID, FirstID, SecondID, ThirdID, CompletedDate, SyouninsyaName) VALUE (" . $rs["PersonDataID"] . ", " . $row["KaikyuID"] . ", " . $row["FirstID"] . ", " . $row["SecondID"] . ", " . $row["ThirdID"] . ", Null, Null)");
+    $mysqli->query("INSERT INTO SaimokuPersonData (PersonDataID, KaikyuID, FirstID, SecondID, ThirdID) VALUE ( " . $rs["PersonDataID"] . " , " . $row["KaikyuID"] . " , " . $row["FirstID"] . " , " . $row["SecondID"] . " , " . $row["ThirdID"] . ")");
 }
 $mysqli->close();
 

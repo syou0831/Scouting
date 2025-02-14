@@ -5,7 +5,6 @@ $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
 
 $PID = $_GET["PID"];
-$KID = $_GET["KID"];
 
 $rs = $mysqli->query("SELECT DISTINCT * FROM SaimokuData
 JOIN SaimokuPersonData

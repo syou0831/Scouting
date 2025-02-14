@@ -51,7 +51,6 @@ CREATE TABLE PersonData(
     StateDate DATE NOT NULL ,
     StateField VARCHAR(255) ,
     NyudanDate DATE  ,
-    Adult VARCHAR(10) NOT NULL ,
     inBVS DATE  ,
     inCS DATE  ,
     inBS DATE  ,
@@ -328,3 +327,7 @@ SELECT * FROM SaimokuData
 JOIN SaimokuPersonData
 ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = SaimokuPersonData.FirstID AND SaimokuData.SecondID = SaimokuPersonData.SecondID AND SaimokuData.ThirdID = SaimokuPersonData.ThirdID
 WHERE PersonID = 52;
+UPDATE SaimokuPersonData SET CompletedDate = "" WHERE PersonDataID = 6 AND KaikyuID = 1 AND FirstID = 1 AND SecondID = 1 AND ThirdID = 1;
+
+
+https://23cm0117.main.jp/scouting/JSON/SaimokuUPDateJSON.php?PID=6&KaikyuID=4&FirstID=3&SecondID=2&ThirdID=1&Date=2025-02-15&Name=%E9%88%B4%E6%9C%A8
