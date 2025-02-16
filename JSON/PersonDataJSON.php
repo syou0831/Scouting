@@ -6,7 +6,7 @@ $mysqli->set_charset(UTF8);
 
 $PID = $_GET["PID"];
 
-$rs = $mysqli->query("SELECT GroupID, Name, NameFurigana, Birthday, Address, Tel, Sex FROM PersonData WHERE PersonDataID = " . $PID);
+$rs = $mysqli->query("SELECT * FROM PersonData WHERE PersonDataID = " . $PID);
 $row = $rs->fetch_assoc();
 
 $rs2 = $mysqli->query("SELECT * FROM GroupData WHERE GroupID = " . $row["GroupID"]);
@@ -19,6 +19,23 @@ $Data[] = array(
     'Address' => $row["Address"],
     'Tel' => $row["Tel"],
     'Sex' => $row["Sex"],
+    'StateDate' => $row["StateDate"],
+    'StateField' => $row["StateField"],
+    'inBVS' => $row["inBVS"],
+    'inCS' => $row["inCS"],
+    'inBS' => $row["inBS"],
+    'inVS' => $row["inVS"],
+    'inRS' => $row["inRS"],
+    'Minarai' => $row["Minarai"],
+    'Basic' => $row["Basic"],
+    'Second' => $row["Second"],
+    'First' => $row["First"],
+    'Kiku' => $row["Kiku"],
+    'Hayabusa' => $row["Hayabusa"],
+    'Fuji' => $row["Fuji"],
+    'SinkouSyourei' => $row["SinkouSyourei"],
+    'Syukyou' => $row["Syukyou"],
+    'SyukyouName' => $row["SyukyouName"],
     'Prefecture' => $row2["Prefecture"],
     'Area' => $row2["Area"],
     'City' => $row2["City"],
