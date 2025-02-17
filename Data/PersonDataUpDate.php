@@ -1,10 +1,9 @@
 <?php
+
 require 'dbConf.inc';
 $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
 $mysqli->select_db(DB_NAME);
 $mysqli->set_charset(UTF8);
-if ($mysqli->connect_errno) {
-}
 
 $ID = $_POST["PID"];
 
@@ -40,8 +39,8 @@ if (!empty($_POST["Address"])) {
     // }
 }
 
-if (!empty($_POST["FirstTel"]) && !empty($_POST["SecondTel"]) && !empty($_POST["ThirdTel"])) {
-    $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
+if (!empty($_POST["FTel"]) && !empty($_POST["STel"]) && !empty($_POST["TTel"])) {
+    $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FTel"] . "-" . $_POST["STel"] . "-" . $_POST["TTel"] . "' WHERE PersonDataID = " . $ID);
     // $rs = $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
     // if (!is_bool($rs)) {
     //     $rs->fetch_assoc();
@@ -254,64 +253,13 @@ if (!empty($_POST["Syukyou"])) {
     // }
 } else {
     $mysqli->query("UPDATE PersonData SET Syukyou = NULL WHERE PersonDataID = " . $ID);
-    // $rs = $mysqli->query("UPDATE PersonData SET Syukyouame = NULL WHERE PersonDataID = " . $ID);
-    // if (!is_bool($rs)) {
-    //     $rs->fetch_assoc();
-    // }
 }
 
 if (!empty($_POST["SyukyouName"])) {
     $mysqli->query("UPDATE PersonData SET SyukyouName = '" . $_POST["SyukyouName"] . "' WHERE PersonDataID = " . $ID);
-    // $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = '" . $_POST["SyukyouName"] . "' WHERE PersonDataID = " . $ID);
-    // if (!is_bool($rs)) {
-    //     $rs->fetch_assoc();
-    // }
 } else {
     $mysqli->query("UPDATE PersonData SET SyukyouName = NULL WHERE PersonDataID =" . $ID);
-    // $rs = $mysqli->query("UPDATE PersonData SET SyukyouName = NULL WHERE PersonDataID =" . $ID);
-    // if (!is_bool($rs)) {
-    //     $rs->fetch_assoc();
-    // }
 }
-
-
-
-
-// if (is_bool($rs)) {
-//     // var_dump($mysqli->error);
-// } else {
-//     $rs->fetch_assoc();
-// }
-
-// CSLeaderState = '" . $_POST["Name"] . "',
-// CSLeaderEnd = '" . $_POST["Name"] . "',
-// CSSubLeaderState = '" . $_POST["Name"] . "',
-// CSSubLeaderEnd = '" . $_POST["Name"] . "',
-// BSLeaderState = '" . $_POST["Name"] . "',
-// BSLeaderEnd = '" . $_POST["Name"] . "',
-// BSSubLeaderState = '" . $_POST["Name"] . "',
-// BSSubLeaderEnd = '" . $_POST["Name"] . "',
-// BSJouhanState = '" . $_POST["Name"] . "',
-// BSJouhanEnd = '" . $_POST["Name"] . "',
-// BSTaitukiState = '" . $_POST["Name"] . "',
-// BSTaitukiEnd = '" . $_POST["Name"] . "',
-// TaiSankaCount = TaiSankaCount + 1,
-// HanSankaCount = HanSankaCount + 1,
-// HikingCount = HikingCount + 1,
-// CampCount = CampCount + 1,
-// CampHakusu = CampHakusu + 1,
-// VolunteerName = '" . $_POST["Name"] . "',
-// VolunteerState = '" . $_POST["Name"] . "',
-// VolunteerEnd = '" . $_POST["Name"] . "',
-// OverseasEventName = '" . $_POST["Name"] . "',
-// OverseasEventState = '" . $_POST["Name"] . "',
-// OverseasEventEnd = '" . $_POST["Name"] . "',
-// EventName = '" . $_POST["Name"] . "',
-// EventState = '" . $_POST["Name"] . "',
-// EventEnd = '" . $_POST["Name"] . "'
-// ");
-
-
 
 $mysqli->close();
 
