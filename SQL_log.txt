@@ -46,7 +46,7 @@ CREATE TABLE PersonData(
     NameFurigana VARCHAR(100) NOT NULL ,
     Birthday DATE NOT NULL ,
     Address VARCHAR(255) NOT NULL ,
-    Tel INT NOT NULL ,
+    Tel VARCHAR(15) NOT NULL ,
     Sex VARCHAR(10) NOT NULL ,
     StateDate DATE NOT NULL ,
     StateField VARCHAR(255) ,

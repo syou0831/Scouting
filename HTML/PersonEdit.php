@@ -65,9 +65,9 @@ $ID = $_POST["PID"];
                 <tr><td class='T_Title'>住所</td>
                 <td><input type='text' name='Address' class='TextBoxLong' value='" . $row["Address"] . "'></td><br></tr>
                 <tr><td class='T_Title'>電話</td>
-                <td><input type='text' name='FirstTel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[0] . "'>-
-                <input type='text' name='SecondTel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[1] . "'>-
-                <input type='text' name='ThirdTel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[2] . "'></td></tr></Table>
+                <td><input type='text' name='FTel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[0] . "'>-
+                <input type='text' name='STel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[1] . "'>-
+                <input type='text' name='TTel' class='TextBoxShort' value='" . preg_split("/[-]/", $row["Tel"])[2] . "'></td></tr></Table>
                 <h2>スカウト歴</h2><Table Border='1'>
                 <tr><td class='T_Title'>誓いをたてた日</td>
                 <td><input type='Date' name='StateDate' value='" . $row["StateDate"] . "'></td></tr>
