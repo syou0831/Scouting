@@ -39,8 +39,8 @@ if (!empty($_POST["Address"])) {
     // }
 }
 
-if (!empty($_POST["FirstTel"]) && !empty($_POST["SecondTel"]) && !empty($_POST["ThirdTel"])) {
-    $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
+if (!empty($_POST["FTel"]) && !empty($_POST["STel"]) && !empty($_POST["TTel"])) {
+    $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FTel"] . "-" . $_POST["STel"] . "-" . $_POST["TTel"] . "' WHERE PersonDataID = " . $ID);
     // $rs = $mysqli->query("UPDATE PersonData SET Tel = '" . $_POST["FirstTel"] . "-" . $_POST["SecondTel"] . "-" . $_POST["ThirdTel"] . "' WHERE PersonDataID = " . $ID);
     // if (!is_bool($rs)) {
     //     $rs->fetch_assoc();
