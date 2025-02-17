@@ -55,13 +55,7 @@ $DID = $_GET["ID"];
             echo "<a href='./EkimuEdit.php?ID={$DID}'><button>役務の編集</button></a>";
             $rs = $mysqli->query('SELECT TeamID, TeamName FROM TeamData WHERE DeptID =' . $DID . ' AND GroupID = ' . $_SESSION["GID"]);
             while ($row = $rs->fetch_assoc()) {
-                $rs2 = $mysqli->query('SELECT DISTINCT PersonData.PersonDataID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName 
-                                        FROM PersonData
-                                        JOIN TeamMemberData
-                                        ON PersonData.PersonDataID = TeamMemberData.PersonDataID
-                                        JOIN EkimuData
-                                        ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
-                                        WHERE TeamMemberData.DeptID =' . $DID . ' AND PersonData.GroupID = ' . $_SESSION["GID"] . ' AND TeamMemberData.TeamID = ' . $row["TeamID"]);
+                $rs2 = $mysqli->query('SELECT DISTINCT PersonData.PersonDataID, PersonData.Name, PersonData.Sex, TeamMemberData.EkimuID, EkimuData.EkimuName FROM PersonData JOIN TeamMemberData ON PersonData.PersonDataID = TeamMemberData.PersonDataID JOIN EkimuData ON TeamMemberData.GroupID = EkimuData.GroupID AND TeamMemberData.DeptID = EkimuData.DeptID AND TeamMemberData.TeamID = EkimuData.TeamID AND TeamMemberData.EkimuID = EkimuData.EkimuID WHERE TeamMemberData.DeptID = ' . $DID . ' AND PersonData.GroupID = ' . $_SESSION["GID"] . ' AND TeamMemberData.TeamID = ' . $row["TeamID"]);
                 echo "<table>";
                 echo "<thead><tr><th colspan='4' >";
                 echo $row["TeamName"];

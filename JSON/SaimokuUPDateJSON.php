@@ -25,6 +25,7 @@ echo "<br>";
 echo $DateText;
 echo "<br>";
 echo $Name;
+echo "<br>";
 
 // $mysqli->query('UPDATE SaimokuPersonData SET CompletedDate = "'  . $DateText . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID)->fetch_assoc();
 $sql = 'UPDATE SaimokuPersonData SET CompletedDate = "'  . $DateText . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID;
@@ -32,4 +33,8 @@ $sql = 'UPDATE SaimokuPersonData SET CompletedDate = "'  . $DateText . '" WHERE 
 echo $sql;
 $mysqli->query($sql);
 
-$mysqli->query('UPDATE SaimokuPersonData SET SyouninsyaName = "'  . $Name . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID)->fetch_assoc();
+echo "<br>";
+
+$sql2 = 'UPDATE SaimokuPersonData SET SyouninsyaName = "'  . $Name . '" WHERE PersonDataID = ' . $PID . ' AND KaikyuID = ' . $KaikyuID . ' AND FirstID = ' . $FirstID . ' AND SecondID = ' . $SecondID . ' AND ThirdID = ' . $ThirdID;
+echo $sql2;
+$mysqli->query($sql2);
