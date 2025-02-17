@@ -60,7 +60,7 @@ $DID = $_GET["ID"];
                                         JOIN TeamMemberData
                                         ON PersonData.PersonDataID = TeamMemberData.PersonDataID
                                         JOIN EkimuData
-                                        ON TeamMemberData.GroupID = EkimuData.GroupID & TeamMemberData.DeptID = EkimuData.DeptID & TeamMemberData.TeamID = EkimuData.TeamID & TeamMemberData.EkimuID = EkimuData.EkimuID
+                                        ON TeamMemberData.GroupID = EkimuData.GroupID AND TeamMemberData.DeptID = EkimuData.DeptID AND TeamMemberData.TeamID = EkimuData.TeamID AND TeamMemberData.EkimuID = EkimuData.EkimuID
                                         WHERE TeamMemberData.DeptID =' . $DID . ' AND PersonData.GroupID = ' . $_SESSION["GID"] . ' AND TeamMemberData.TeamID = ' . $row["TeamID"]);
                 echo "<table>";
                 echo "<thead><tr><th colspan='4' >";
