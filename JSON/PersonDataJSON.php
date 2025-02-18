@@ -12,6 +12,70 @@ $row = $rs->fetch_assoc();
 $rs2 = $mysqli->query("SELECT * FROM GroupData WHERE GroupID = " . $row["GroupID"]);
 $row2 = $rs2->fetch_assoc();
 
+if ($row["StateField"] == null) {
+    $row["StateField"] = "";
+}
+
+if ($row["inBVS"] == null) {
+    $row["inBVS"] = "";
+}
+
+if ($row["inCS"] == null) {
+    $row["inCS"] = "";
+}
+
+if ($row["inBS"] == null) {
+    $row["inBS"] = "";
+}
+
+if ($row["inVS"] == null) {
+    $row["inVS"] = "";
+}
+
+if ($row["inRS"] == null) {
+    $row["inRS"] = "";
+}
+
+if ($row["Minarai"] == null) {
+    $row["Minarai"] = "";
+}
+
+if ($row["Basic"] == null) {
+    $row["Basic"] = "";
+}
+
+if ($row["Second"] == null) {
+    $row["Second"] = "";
+}
+
+if ($row["First"] == null) {
+    $row["First"] = "";
+}
+
+if ($row["Kiku"] == null) {
+    $row["Kiku"] = "";
+}
+
+if ($row["Hayabusa"] == null) {
+    $row["Hayabusa"] = "";
+}
+
+if ($row["Fuji"] == null) {
+    $row["Fuji"] = "";
+}
+
+if ($row["SinkouSyourei"] == null) {
+    $row["SinkouSyourei"] = "";
+}
+
+if ($row["Syukyou"] == null) {
+    $row["Syukyou"] = "";
+}
+
+if ($row["SyukyouName"] == null) {
+    $row["SyukyouName"] = "";
+}
+
 $Data[] = array(
     'Name' => $row["Name"],
     'NameFurigana' => $row["NameFurigana"],

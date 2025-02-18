@@ -12,6 +12,14 @@ ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = S
 WHERE PersonDataID = " . $PID);
 
 while ($row = $rs->fetch_assoc()) {
+    if ($row["CompletedDate"] == null) {
+        $row["CompletedDate"] = "";
+    }
+
+    if ($row["SyouninsyaName"] == null) {
+        $row["SyouninsyaName"] = "";
+    }
+
     $Data[] = array(
         'KaikyuID' => $row["KaikyuID"],
         'KaikyuTheme' => $row["KaikyuTheme"],
