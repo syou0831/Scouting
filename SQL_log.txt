@@ -151,20 +151,19 @@ ON SaimokuData.KaikyuID = SaimokuPersonData.KaikyuID AND SaimokuData.FirstID = S
 CREATE TABLE EkimuData(
     GroupID INT NOT NULL ,
     DeptID INT NOT NULL ,
-    TeamID INT NOT NULL ,
     EkimuID INT NOT NULL ,
     EkimuName VARCHAR(30) NOT NULL ,
 
-    PRIMARY KEY (GroupID,DeptID,TeamID,EkimuID),
+    PRIMARY KEY (GroupID,DeptID,EkimuID),
     FOREIGN KEY (GroupID) REFERENCES GroupData (GroupID),
     FOREIGN KEY (DeptID) REFERENCES DeptData (DeptID)
 );
 
-INSERT INTO EkimuData (GroupID, DeptID, TeamID, EkimuID, EkimuName)
+INSERT INTO EkimuData (GroupID, DeptID, EkimuID, EkimuName)
 VALUES 
-(1, 1, 1, 1, '隊長'),
-(1, 1, 1, 2, '副長'),
-(1, 1, 2, 1, 'スカウト');
+(1, 1, 1, '隊長'),
+(1, 1, 2, '副長'),
+(1, 1, 1, 'スカウト');
 
 CREATE TABLE TeamData(
     GroupID INT NOT NULL ,

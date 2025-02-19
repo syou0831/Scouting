@@ -21,27 +21,16 @@ $TID = $_POST["TeamID"];
 $EID = $_POST["count"];
 $Name = $_POST["Name"];
 
-// echo $GID;
-// echo "<br>";
-// echo $DID;
-// echo "<br>";
-// echo $TID;
-// echo "<br>";
-// echo $EID;
-// echo "<br>";
-// echo $Name;
-// echo "<br>";
-
-$rs = $mysqli->query("SELECT * FROM EkimuData WHERE GroupID = " . $GID . " AND DeptID = " . $DID . " AND TeamID = " . $TID . " AND EkimuID =" . $EID);
+$rs = $mysqli->query("SELECT * FROM EkimuData WHERE GroupID = " . $GID . " AND DeptID = " . $DID . " AND EkimuID =" . $EID);
 if (empty($rs->fetch_assoc())) {
     // echo "新規";
-    $rs = $mysqli->query('INSERT INTO EkimuData (GroupID, DeptID, TeamID, EkimuID, EkimuName) VALUE (' . $GID . ', ' . $DID . ' , ' . $TID . ', ' . $EID . ', "' . $Name . '")');
+    $rs = $mysqli->query('INSERT INTO EkimuData (GroupID, DeptID, EkimuID, EkimuName) VALUE (' . $GID . ', ' . $DID . ' , ' . $EID . ', "' . $Name . '")');
     if (!is_bool($rs)) {
         $rs->fetch_assoc();
     }
 } else {
     // echo "更新";
-    $rs = $mysqli->query('UPDATE EkimuData SET EkimuName = "' . $Name . '" WHERE GroupID = ' . $GID . ' AND DeptID = ' . $DID . ' AND TeamID = ' . $TID . ' AND EkimuID = ' . $EID);
+    $rs = $mysqli->query('UPDATE EkimuData SET EkimuName = "' . $Name . '" WHERE GroupID = ' . $GID . ' AND TeamID = ' . $TID . ' AND EkimuID = ' . $EID);
     if (!is_bool($rs)) {
         $rs->fetch_assoc();
     }

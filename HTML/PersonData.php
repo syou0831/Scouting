@@ -1,11 +1,13 @@
 <?php
 // ini_set('session.gc_maxlifetime', 30);
+ini_set('display_errors', "On");
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 1);
 session_start();
 if (empty($_SESSION["GID"])) {
     header("Location: ../HTML/Login.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="jp">
@@ -66,6 +68,10 @@ $DID = $_POST["DID"];
             echo "<tr><td class='T_Title'>誕生日</td><td>" . $row["Birthday"] . "</td></tr>";
             echo "<tr><td class='T_Title'>住所</td><td>" . $row["Address"] . "</td></tr>";
             echo "<tr><td class='T_Title'>Tel</td><td>" . $row["Tel"] . "</td></tr>";
+
+            $url = "../Data/qr_encode.php?data=" . $row["Name"];
+            echo "<tr><td class='T_Title'>QRコード</td><td><img src='" . $url . "' div='QRCode'></tr></td>";
+
             echo "</table>";
 
             echo "<h2>スカウト歴</h2><table>";

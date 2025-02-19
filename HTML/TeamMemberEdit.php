@@ -94,24 +94,28 @@ switch ($DID) {
                 $rs2 = $mysqli->query('SELECT * FROM EkimuData');
                 echo "<form method='POST' action='../Data/TeamMemberEditData.php'>";
 
-                echo "<tr><td>" . $row["Name"] . "</td>
-                <td><select name='Ekimu' size='1'>";
-                $rs2 = $mysqli->query('SELECT * FROM EkimuData WHERE GroupID = ' . $_SESSION["GID"] . ' AND DeptID = ' . $DID);
-                echo "<option disabled selected>役務の選択</option>";
-                while ($row2 = $rs2->fetch_assoc()) {
-                    echo "<option value='" . $row2["EkimuID"] . "'>" . $row2["EkimuName"] . "</option>";
-                }
-                echo "</select></td>
-                
-                <td><select name='Team' size='1'>";
+                echo "<tr><td>" . $row["Name"] . "</td>";
+
+                echo "<td><select name='Team' size='1'>";
                 $rs3 = $mysqli->query('SELECT TeamID, TeamName FROM TeamData WHERE DeptID =' . $DID . ' AND GroupID = ' . $_SESSION["GID"]);
+
+
 
                 echo "<option disabled selected>班の選択</option>";
                 while ($row3 = $rs3->fetch_assoc()) {
                     echo "<option value='" . $row3["TeamID"] . "'>" . $row3["TeamName"] . "</option>";
                 }
-                echo "</select></td>
-                <input type='hidden' name='PersonDataID' value=' " . $row["PersonDataID"] . "'>
+                echo "</select></td>";
+
+                echo "<td><select name='Ekimu' size='1'>";
+                $rs2 = $mysqli->query('SELECT * FROM EkimuData WHERE GroupID = ' . $_SESSION["GID"] . ' AND DeptID = ' . $DID);
+                echo "<option disabled selected>役務の選択</option>";
+                while ($row2 = $rs2->fetch_assoc()) {
+                    echo "<option value='" . $row2["EkimuID"] . "'>" . $row2["EkimuName"] . "</option>";
+                }
+                echo "</select></td>";
+
+                echo "<input type='hidden' name='PersonDataID' value=' " . $row["PersonDataID"] . "'>
                 <input type='hidden' name='DID' value=' " . $DID . "'>
                 <td><input type='submit' value='反映'></td></tr></form>";
             }
