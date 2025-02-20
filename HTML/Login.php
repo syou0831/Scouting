@@ -36,24 +36,17 @@ $mysqli->set_charset(UTF8);
         </h1>
 
         <div class="content">
-            <form method="POST" action="../Data/LoginData.php">
-                <select name="ID" size="1">
-                    <?php
-                    $rs = $mysqli->query('SELECT * FROM GroupData');
-                    while ($row = $rs->fetch_assoc()) {
-                        echo "<option value='" . $row["GroupID"] . "'>{$row["GroupID"]}　{$row["Area"]}地区{$row["City"]}第{$row["GroupNum"]}団</option>";
-                    }
-                    ?>
-                </select><br>
-                <input name="PASS" type="password"><br>
+            <form method="POST" action="../Data/LoginData.php" id="loginForm">
+                <input name="ID" type="text" placeholder="USER ID" required><br><br>
+                <input name="PASS" type="password" placeholder="PASSWORD" required><br>
+                <br>
                 <?php
                 if (!empty($_SESSION["eMessage"])) {
-                    echo $_SESSION["eMessage"];
+                    echo "<p style='color: red;'>" . htmlspecialchars($_SESSION["eMessage"], ENT_QUOTES, 'UTF-8') . "</p>";
                     unset($_SESSION["eMessage"]);
                 }
                 ?>
-                <br>
-                <input type="submit">
+                <input type="submit" value="ログイン">
             </form>
         </div>
     </div>
