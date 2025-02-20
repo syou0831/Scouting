@@ -11,7 +11,7 @@ DROP DATABASE scouting;
 DROP TABLE SaimokuPersonData;
 ALTER TABLE PersonData ADD COLUMN SyukyouName VARCHAR(50);
 
-ALTER TABLE PersonData ADD COLUMN DeptImage VARCHAR(5);
+ALTER TABLE PersonData ADD CONSTRAINT PersonID UNIQUE;
 
 DELETE FROM PersonData;
 
@@ -38,7 +38,7 @@ VALUES
 ('東京', '北多摩', '小平', '五', '$2y$10$Sc096WybgnpW9bThcbjX6eAqrwwlGIgCtosSJCecW5PvLk0aWDC6u'); //password->"password"
 
 CREATE TABLE PersonData(
-    PersonID VARCHAR(255) NOT NULL ,
+    PersonID VARCHAR(255) UNIQUE NOT NULL ,
     PersonDataID INT AUTO_INCREMENT NOT NULL ,
     Password VARCHAR(255) NOT NULL ,
     GroupID INT NOT NULL ,

@@ -35,6 +35,19 @@ $mysqli->set_charset(UTF8);
 $DID = $_GET["ID"];
 ?>
 
+<script>
+    // 1. 履歴を書き換えて「戻る」時の遷移先を設定
+    history.replaceState(null, null, "index.php");
+
+    // 2. 新しい履歴を追加（現在のページ）
+    history.pushState(null, null, "MemberList.php?DID".$DID);
+
+    // 3. 「戻る」ボタンが押されたときの処理
+    window.onpopstate = function() {
+        location.href = "index.php"; // 戻るボタンで指定ページへ遷移
+    };
+</script>
+
 <body>
     <header>
         <a href="index.php"><img src="../image/BS_logo.png" class="imageLogo"></a>
