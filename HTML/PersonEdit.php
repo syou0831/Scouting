@@ -23,30 +23,6 @@ if (empty($_SESSION["GID"])) {
     <title>モバイル進級手帳</title>
 </head>
 
-<script>
-    // 1. 履歴を書き換えて「戻る」時の遷移先を設定
-    history.replaceState(null, null, "PersonData.php");
-
-    // 2. 新しい履歴を追加（現在のページ）
-    history.pushState(null, null, window.location.href);
-
-    // 3. 「戻る」ボタンが押されたときの処理
-    window.onpopstate = function() {
-        fetch("post_receiver.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "PID=".$_POST["PID"],
-            })
-            .then(response => response.text())
-            .then(data => console.log("POST成功:", data))
-            .catch(error => console.error("エラー:", error));
-
-        // location.href = "PersonData.php"; // 戻るボタンで指定ページへ遷移
-    };
-</script>
-
 <?php
 require '../Data/dbConf.inc';
 $mysqli = new mysqli(HOST_NAME, USER_NAME, DB_PASS);
@@ -74,7 +50,7 @@ $ID = $_POST["PID"];
             $row = $rs->fetch_assoc();
             echo "<h2>基本情報</h2>";
             echo "<form method='POST' action='../HTML/PersonData.php'>
-            <input type='hidden' name='PID' value='" . $_POST["PID"] . "'>
+            <input type='hidden' name='PID' value='" . $ID . "'>
             <input type='submit' value='戻る'>
             </form>";
             echo "

@@ -35,7 +35,7 @@ $DID = $_GET["ID"];
 $NinBirthday = new DateTime();
 $MaxBirthday = new DateTime();
 
-$now = new DateTime('2025-03-31'); //現在日
+$now = new DateTime(); //現在日
 
 $Nendo = $now->modify('-3 month');
 $Nendo = new DateTime($Nendo->format('Y-04-01')); //YYYY/04/01

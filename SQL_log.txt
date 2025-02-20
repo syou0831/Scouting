@@ -329,4 +329,5 @@ WHERE PersonID = 52;
 UPDATE SaimokuPersonData SET CompletedDate = "" WHERE PersonDataID = 6 AND KaikyuID = 1 AND FirstID = 1 AND SecondID = 1 AND ThirdID = 1;
 
 
-https://23cm0117.main.jp/scouting/JSON/SaimokuUPDateJSON.php?PID=6&KaikyuID=4&FirstID=3&SecondID=2&ThirdID=1&Date=2025-02-15&Name=%E9%88%B4%E6%9C%A8
+
+SELECT Name, Birthday FROM PersonData WHERE (Birthday BETWEEN '2004-04-01' AND '2005-03-31')  OR (Birthday BETWEEN '2013-04-01' AND '2014-03-31')
