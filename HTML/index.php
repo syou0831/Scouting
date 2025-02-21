@@ -52,7 +52,7 @@ if (!empty($_GET["Dept"])) {
 
         // echo $text;
         $NinBirthday = new DateTime();
-        $MaxBirthday = new DateTime();
+        $MaxBirthday = new DateTime('1900-01-01');
 
         $now = new DateTime(); //現在日
 
@@ -97,6 +97,9 @@ if (!empty($_GET["Dept"])) {
 <body>
     <header>
         <a href="index.php"><img src="../image/BS_logo.png" class="imageLogo"></a>
+        <a href="PersonAdd.php">メンバーの追加</a><br>
+        <a href="TeamEdit.php">班の編集</a><br>
+        <a href="TeamMemberEdit.php">班割の編集</a><br>
         <a href="../Data/LogoutData.php">ログアウト</a>
     </header>
     <div class="main">
